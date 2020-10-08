@@ -12,7 +12,7 @@ stages {
 
       // Get some code from a GitHub repository
 
-      git 'https://github.com/paviprawin/game-of-life.git'
+      git 'https://github.com/paviprawin/VProfile.git'
 
       // Get the Maven tool.
      
@@ -59,18 +59,18 @@ stages {
        nexusPublisher nexusInstanceId: '123', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'vprofile', groupId: 'com.visualpathit', packaging: 'war', version: '$BUILD_NUMBER']]]
       }
      }
-    stage('Deploy War') {
-      steps {
-        sh label: '', script: 'ansible-playbook deploy.yml'
-      }
- }
+    //stage('Deploy War') {
+      //steps {
+        //sh label: '', script: 'ansible-playbook deploy.yml'
+      //}
+ //}
 }
 post {
        success {
             archiveArtifacts 'gameoflife-web/target/*.war'
        }
        failure {
-           mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+           mail to:"jyothi59.ithr@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
 }

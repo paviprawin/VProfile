@@ -11,7 +11,7 @@ stages {
 // for display purpose
 
       // Get some code from a GitHub repository
-git 'https://github.com/paviprawin/VProfile.git'
+       git 'https://github.com/paviprawin/VProfile.git'
 
       // Get the Maven tool.
      
@@ -55,7 +55,7 @@ git 'https://github.com/paviprawin/VProfile.git'
 }
      stage('Artifact upload') {
       steps {
-       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/vprofile.war']], mavenCoordinate: [artifactId: 'vprofile', groupId: 'com.visualpathit', packaging: 'war', version: '$BUILD_NUMBER']]]
+       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/target/vprofile.war']], mavenCoordinate: [artifactId: 'vprofile', groupId: 'com.visualpathit', packaging: 'war', version: '$BUILD_NUMBER']]]
       }
      }
     //stage('Deploy War') {

@@ -11,12 +11,7 @@ stages {
 // for display purpose
 
       // Get some code from a GitHub repository
-
-<<<<<<< HEAD
-      git 'https://github.com/paviprawin/Vprofile.git'
-=======
-      git 'https://github.com/paviprawin/VProfile.git'
->>>>>>> f056c2431a8353ccb885d32f5bbab3d46a28052e
+git 'https://github.com/paviprawin/VProfile.git'
 
       // Get the Maven tool.
      

@@ -12,7 +12,11 @@ stages {
 
       // Get some code from a GitHub repository
 
+<<<<<<< HEAD
       git 'https://github.com/paviprawin/Vprofile.git'
+=======
+      git 'https://github.com/paviprawin/VProfile.git'
+>>>>>>> f056c2431a8353ccb885d32f5bbab3d46a28052e
 
       // Get the Maven tool.
      
@@ -56,21 +60,21 @@ stages {
 }
      stage('Artifact upload') {
       steps {
-       nexusPublisher nexusInstanceId: '123', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'vprofile', groupId: 'com.visualpathit', packaging: 'war', version: '$BUILD_NUMBER']]]
+       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/target/vprofile.war']], mavenCoordinate: [artifactId: 'vprofile', groupId: 'com.visualpathit', packaging: 'war', version: '$BUILD_NUMBER']]]
       }
      }
-    stage('Deploy War') {
-      steps {
-        sh label: '', script: 'ansible-playbook deploy.yml'
-      }
- }
+    //stage('Deploy War') {
+      //steps {
+        //sh label: '', script: 'ansible-playbook deploy.yml'
+      //}
+ //}
 }
 post {
        success {
             archiveArtifacts 'gameoflife-web/target/*.war'
        }
        failure {
-           mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+           mail to:"jyothi59.ithr@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
 }
